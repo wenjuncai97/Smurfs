@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import "./App.css";
 import {connect} from 'react-redux';
-import {fetchSmurfs} from '../state/actions'
+import {fetchSmurfs, addSmurf} from '../state/actions'
 
 class App extends Component {
   
   componentDidMount(){
     this.props.fetchSmurfs();
   }
+
+  handleAddSmurf = (smurfData) => {
+    this.props.addSmurf(smurfData);
+  }
+  // NOW MAKE A NEW COMPONENT AND ROUTE IT TO /FORM, ADD FORM FUNCTIONALITY AND ADD HANDLEADDSMURF TO THE FORM SO IT POSTS TO THE API AND IT WILL RENDER TO THE APP
 
   render() {
     console.log(this.props)
@@ -38,4 +43,4 @@ const mapState = (s) => {
   }
 }
 
-export default connect(mapState, {fetchSmurfs})(App);
+export default connect(mapState, {fetchSmurfs, addSmurf})(App);

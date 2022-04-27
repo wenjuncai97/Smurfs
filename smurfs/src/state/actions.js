@@ -29,3 +29,17 @@ export const fetchSmurfs = () => (dispatch) => {
         dispatch(loading());
     })
 }
+
+export const addSmurf = (newSmurf) => (dispatch) => {
+    dispatch(loading())
+    axios.post('http://localhost:3333/smurfs', newSmurf)
+    .then(res => {
+        // dispatch(loadSmurfs(res.data))
+        dispatch(loading());
+        dispatch(error(""))
+    })
+    .catch(err => {
+        dispatch(error(err.message))
+        dispatch(loading());
+    })
+}
